@@ -121,7 +121,7 @@ To run the test environment on a single machine Docker Compose can be used. Befo
 
 # Missing files
 
-Due to GitHub 100 MB size limit few files from Node.js environments are missing from the repository and have to be downloaded:
+Due to GitHub's 100 MB size limit few files from Node.js environments are missing from the repository and have to be downloaded:
 
 ## JDK
 1. Download latest verion of JDK and insert it into ```node-mongo/ServerAgent-2.2.3``` and ```node-mysql/ServerAgent-2.2.3``` directories
