@@ -1,0 +1,19 @@
+---
+services:
+- module: monitoring
+  ^local:
+  server-agent:
+  - address: spring:4444
+    logging: True
+    metrics:
+    - cpu
+    - memory
+    - network
+execution:
+- executor: jmeter 
+  concurrency: 1000
+  ramp-up: 1m
+  hold-for: 2m
+  scenario:
+    requests:
+    - http://spring:8080/people

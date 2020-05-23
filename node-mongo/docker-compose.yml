@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: performance
+    volumes:
+      - ./data.js:/docker-entrypoint-initdb.d/data.js
+
+  node:
+    image: node
+    ports:
+      - 3000:3000
+      - 4444:4444
+    volumes:
+      - ./node-mongo-performance:/usr/src/node-mongo-performance
+      - ./ServerAgent-2.2.3:/usr/ServerAgent-2.2.3
+    working_dir: /usr/src/node-mongo-performance
+    entrypoint:
+      - bash
+      - -c
+      - "chmod u+x /usr/ServerAgent-2.2.3/startAgent.sh && chmod u+x /usr/ServerAgent-2.2.3/jdk-13.0.1/bin/java && /usr/ServerAgent-2.2.3/startAgent.sh && npm start"
+      
+  taurus:
+    image: blazemeter/taurus
+    volumes:
+      - ./:/bzt-configs
+      - ./results:/tmp
+    entrypoint:
+      - bash
+      - -c
+      - "chmod u+x /bzt-configs/test.sh && /bzt-configs/test.sh"

@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: performance
+    volumes:
+      - ./data.js:/docker-entrypoint-initdb.d/data.js
+
+  spring:
+    image: openjdk:8
+    ports:
+      - 8080:8080
+      - 4444:4444
+    volumes:
+      - ./spring-mongo-performance-0.0.1-SNAPSHOT.jar:/usr/src/spring-mongo-performance-0.0.1-SNAPSHOT.jar
+      - ./data:/usr/src/data
+      - ./ServerAgent-2.2.3:/usr/ServerAgent-2.2.3
+    entrypoint:
+      - bash
+      - -c
+      - "chmod u+x /usr/ServerAgent-2.2.3/startAgent.sh && /usr/ServerAgent-2.2.3/startAgent.sh && java -jar /usr/src/spring-mongo-performance-0.0.1-SNAPSHOT.jar"
+
+  taurus:
+    image: blazemeter/taurus
+    volumes:
+      - ./:/bzt-configs
+      - ./results:/tmp
+    entrypoint:
+      - bash
+      - -c
+      - "chmod u+x /bzt-configs/test.sh && /bzt-configs/test.sh"

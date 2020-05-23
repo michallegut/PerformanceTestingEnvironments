@@ -1,0 +1,19 @@
+---
+services:
+- module: monitoring
+  ^local:
+  server-agent:
+  - address: node:4444
+    logging: True
+    metrics:
+    - cpu
+    - memory
+    - network
+execution:
+- executor: jmeter 
+  concurrency: 100
+  ramp-up: 1m
+  hold-for: 2m
+  scenario:
+    requests:
+    - http://node:3000/fibonacci/10000

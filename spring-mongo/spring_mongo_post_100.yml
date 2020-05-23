@@ -1,0 +1,23 @@
+---
+services:
+- module: monitoring
+  ^local:
+  server-agent:
+  - address: spring:4444
+    logging: True
+    metrics:
+    - cpu
+    - memory
+    - network
+execution:
+- executor: jmeter 
+  concurrency: 100
+  ramp-up: 1m
+  hold-for: 2m
+  scenario:
+    requests:
+    - url: http://spring:8080/people
+      method: POST
+      headers:
+        Content-Type: application/json
+      body: '{"firstName": "John", "lastName": "Smith", "email": "john.smith@email.com"}'
