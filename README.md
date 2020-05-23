@@ -7,7 +7,8 @@ This repository contains four performance testing environments based on Taurus (
 3. Spring Boot + MongoDB
 4. Spring Boot + MySQL
 
-Application, database and Taurus are run in separate containers.
+Application, database and Taurus are run in separate containers.  
+Environments can be easily run or modified.
 
 # Data
 
@@ -61,7 +62,9 @@ The environment measures basic set of JMeter metrics and system resources usage 
 
 # Test cases
 
-Each test case is a combination of test method and a number of concurrent virtual users. Test cases last 3 minutes including 1 minute ramp up. ```delete(id)``` method is an exception and it ends when all documents/records are deleted.
+Each test case is a combination of test method and a number of concurrent virtual users.  
+Test cases last 3 minutes including 1 minute ramp up. ```delete(id)``` method is an exception and it ends when all documents/records are deleted.  
+They all apply static maximum load that can be generated with given concurrent users number.
 
 Method | 1 | 10 | 100 | 1000
 ------------ | ------------- | ------------- | ------------- | -------------
