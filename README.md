@@ -74,7 +74,7 @@ patch(id, json) |  | X | X |
 delete(id) | X |   |   |  
 
 As can be seen each method is tested with 10, 100 and 1000 concurrent users except ```getbyid(id)``` and ```patch(id, json)``` which are tested with 10 and 100 users, and ```delete(id)``` which is tested with only 1 user.  
-```fibonacci(n)``` method always calculates 10000-th Fibonacci number.  
+```fibonacci(n)``` method always calculates 10000th Fibonacci number.  
 Test cases are defined in YML files.
 
 # Test run script
