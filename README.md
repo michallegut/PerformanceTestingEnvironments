@@ -11,7 +11,7 @@ Application, database and Taurus are run in separate containers.
 
 # Data
 
-Databases contains one table with 1000 documents/records of the following structure:
+Databases contain one table with 1000 documents/records of the following structure:
 
 ## MongoDB
 ```
