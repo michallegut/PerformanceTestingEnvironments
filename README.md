@@ -110,8 +110,8 @@ Docker Swarm is a preferred method because it allows to split the load that each
 5. Run ```docker stack deploy --compose-file docker-compose.yml test-environment``` on the manager
 6. To display list of services run ```docker service ls``` on the manager
 7. To check which machine is running a service and check it's state run ```docker service ps test-environment_<SERVICE-NAME>``` on the manager
-8. To display logs from a service run ```run docker service logs --follow test-environment_<SERVICE-NAME>``` on the manager
-9. When you gather enough results ```run chmod u+x transfer.sh``` (only on Linux) and ```./transfer.sh``` on the machine running Taurus. It will upload results and return a download link. Results can also be accessed manually as described in the previous section
+8. To display logs from a service run ```docker service logs --follow test-environment_<SERVICE-NAME>``` on the manager
+9. When you gather enough results run ```chmod u+x transfer.sh``` (only on Linux) and ```./transfer.sh``` on the machine running Taurus. It will upload results and return a download link. Results can also be accessed manually as described in the previous section
 
 ## Docker Compose
 
