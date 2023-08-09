@@ -103,7 +103,7 @@ Performance tests can be run on a network of Docker Swarm machines or on a singl
 
 Docker Swarm is a preferred method because it allows to split the load that each component generates on many machines.
 
-1. Run ```swarm init --advertise-addr=<IP-ADDRESS-OF-MANAGER>``` on the swarm manager machine. It will return a token
+1. Run ```docker swarm init --advertise-addr=<IP-ADDRESS-OF-MANAGER>``` on the swarm manager machine. It will return a token
 2. Run ```docker swarm join --token <TOKEN> <IP-ADDRESS-OF-MANAGER>:2377``` on every worker
 3. Clone this repository and download missing files described in the next section (only for Node.js environments) on the manager and every worker
 4. Move to the chosen environment directory on the manager
